@@ -1,4 +1,4 @@
-import { OrigamiStory } from "@/components/home/OrigamiStory";
+import { EffortSum } from "@/components/home/EffortSum";
 import { Manifesto } from "@/components/home/Manifesto";
 import { ColorShowcase } from "@/components/home/ColorShowcase";
 import { Craft } from "@/components/home/Craft";
@@ -11,7 +11,7 @@ export default async function Home() {
 
   return (
     <>
-      <OrigamiStory />
+      <EffortSum />
       <Manifesto />
       {product && <ColorShowcase product={product} />}
       <Craft />

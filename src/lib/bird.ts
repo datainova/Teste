@@ -52,6 +52,10 @@ export const HALF_FOLD: Triangle[] = DIAMOND.map(
   (t, i) => t.map((p, j) => rotate(lerp(p, BIRD[i][j], 0.55), -12)) as Triangle,
 );
 
+export const NEAR_BIRD: Triangle[] = HALF_FOLD.map(
+  (t, i) => t.map((p, j) => rotate(lerp(p, BIRD[i][j], 0.6), 8)) as Triangle,
+);
+
 /** Pulls each vertex toward the triangle's centroid, leaving the paper-cut gaps the logo has. */
 export function inset(t: Triangle, amount = 0.06): Triangle {
   const cx = (t[0][0] + t[1][0] + t[2][0]) / 3;

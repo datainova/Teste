@@ -20,7 +20,7 @@ npm run dev        # http://localhost:3000
 npm run build && npm start
 ```
 
-Cada visita sorteia uma das 30 histórias do hero. Pra ver uma específica: `http://localhost:3000/?historia=7`
+O hero soma o esforço e o transforma numa recompensa, que muda a cada visita. Pra ver uma específica: `http://localhost:3000/?recompensa=3`
 
 ## Estrutura
 
@@ -31,7 +31,7 @@ src/
     loja/                    Grade de produtos
     produto/[handle]/        Página de produto
   components/
-    home/OrigamiStory.tsx    Hero: cada esforço é uma dobra até virar o pássaro
+    home/EffortSum.tsx       Hero "a conta do esforço": cada número é uma dobra até virar o pássaro
     home/Manifesto.tsx       Manifesto com revelação palavra a palavra
     home/ColorShowcase.tsx   Seletor de cor que muda o clima da seção
     home/Craft.tsx           Detalhes: tecido, bordado, tag, caixa
@@ -39,7 +39,7 @@ src/
     cart/CartDrawer.tsx      Carrinho em gaveta
   lib/
     bird.ts                  Geometria do pássaro (logo) e etapas da dobra
-    stories.ts               As 30 histórias do hero (uma sorteada por visita)
+    effort.ts                Números do esforço e recompensas do hero
     commerce/                Camada de dados: hoje mock, depois Shopify
     cart.ts                  Estado do carrinho
 ```
