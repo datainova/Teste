@@ -13,7 +13,7 @@ const COLORS: ProductColor[] = [
 const DETAILS = [
   {
     title: "Tecido",
-    body: "Algodão penteado fio 30.1, toque macio e caimento que não deforma depois da lavagem. Feito pra durar mais do que a semana.",
+    body: "Algodão penteado fio 30.1, toque macio e caimento que não deforma depois da lavagem. Aguenta a rotina inteira com você.",
   },
   {
     title: "Detalhes",
@@ -34,9 +34,9 @@ export const PRODUCTS: Product[] = [
     id: "ff-essential-tee",
     handle: "essential-tee",
     title: "Essential Tee",
-    tagline: "A camiseta da sexta-feira. Todo dia.",
+    tagline: "Pra quem conquista a própria sexta-feira.",
     description:
-      "A peça que começou tudo. Minimalista, pesada no tecido e leve no visual, com o pássaro pequeno no peito pra lembrar que toda semana termina.",
+      "A peça que começou tudo. Minimalista, pesada no tecido e leve no visual, com o pássaro pequeno no peito pra lembrar do que você conquista.",
     price: { amount: 189, currencyCode: "BRL" },
     colors: COLORS,
     sizes: ["P", "M", "G", "GG", "XG"],

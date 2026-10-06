@@ -4,7 +4,6 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CartDrawer } from "@/components/cart/CartDrawer";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
-import { FridayMode } from "@/components/layout/FridayMode";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -23,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s · Friday Feelings",
   },
   description:
-    "A gente não vende camiseta. Vende a sensação de ter ralado a semana inteira e poder, enfim, desligar. Camisetas minimalistas premium.",
+    "Sexta-feira não é um dia. É o que você sente quando cumpre. Camisetas minimalistas premium pra quem trabalha duro e treina duro.",
 };
 
 export const viewport: Viewport = {
@@ -34,7 +33,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="pt-BR" className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
       <body className="min-h-screen">
-        <FridayMode />
         <SmoothScroll />
         <Header />
         <main>{children}</main>

@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const TEXT =
-  "A gente não vende camiseta. A gente vende aquela sensação de ter ralado a semana inteira, cumprido o que prometeu, e poder, enfim, desligar. Uma cerveja gelada com os amigos. Uma viagem paga com o próprio suor. O descanso que você conquistou.";
+  "A gente não espera a sexta-feira. A gente constrói ela. No treino antes do sol nascer. Na entrega que ninguém viu. No décimo quinto dia seguido. E quando o trabalho tá feito, a sexta chega, seja ela que dia for. Um vinho numa terça. Uma viagem paga com o próprio esforço. Descanso na medida certa, porque amanhã tem mais.";
 
 export function Manifesto() {
   const root = useRef<HTMLElement>(null);

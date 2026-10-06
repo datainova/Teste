@@ -2,7 +2,8 @@
 
 > work hard. feel friday.
 
-E-commerce da Friday Feelings. A gente não vende camiseta, vende a sensação de sexta-feira.
+E-commerce da Friday Feelings. Sexta-feira não é um dia: é o que você sente quando cumpre.
+Pra quem trabalha duro, treina duro e aproveita na medida certa.
 
 ## Stack
 
@@ -19,8 +20,6 @@ npm run dev        # http://localhost:3000
 npm run build && npm start
 ```
 
-Pré-visualizar o **modo sexta-feira** em qualquer dia: `http://localhost:3000/?friday=1`
-
 ## Estrutura
 
 ```
@@ -30,17 +29,16 @@ src/
     loja/                    Grade de produtos
     produto/[handle]/        Página de produto
   components/
-    home/OrigamiWeek.tsx     Hero: a semana se dobra em origami até virar o pássaro
+    home/OrigamiWeek.tsx     Hero: cada esforço do dia é uma dobra até virar o pássaro
     home/Manifesto.tsx       Manifesto com revelação palavra a palavra
     home/ColorShowcase.tsx   Seletor de cor que muda o clima da seção
     home/Craft.tsx           Detalhes: tecido, bordado, tag, caixa
-    home/FridayCountdown.tsx Contagem regressiva pra sexta 18h
+    home/EarnedFriday.tsx    Botão "Cumpri.": a sexta acontece quando você conquista
     cart/CartDrawer.tsx      Carrinho em gaveta
   lib/
     bird.ts                  Geometria do pássaro (logo) e etapas da dobra
     commerce/                Camada de dados: hoje mock, depois Shopify
     cart.ts                  Estado do carrinho
-    friday.ts                Lógica do modo sexta (horário de Brasília)
 ```
 
 ## Próximos passos

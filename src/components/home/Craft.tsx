@@ -12,7 +12,7 @@ const ITEMS = [
   {
     n: "01",
     title: "O tecido",
-    body: "Algodão penteado fio 30.1. Pesado na mão, leve no corpo. Não deforma, não desbota, não te abandona na sexta.",
+    body: "Algodão penteado fio 30.1. Pesado na mão, leve no corpo. Não deforma, não desbota. Vai do escritório ao jantar sem perder a forma.",
     visual: (
       <div
         className="h-full w-full"
@@ -49,7 +49,7 @@ const ITEMS = [
   {
     n: "04",
     title: "A caixa",
-    body: "Dobrada à mão, como um origami. Abrir a caixa já é parte da sexta-feira.",
+    body: "Dobrada à mão, como um origami. Abrir a caixa já é um pouco de sexta-feira.",
     visual: (
       <div className="flex h-full w-full items-center justify-center">
         <div className="relative h-28 w-40 rounded-sm bg-ink shadow-xl">
