@@ -1,40 +1,38 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState, useSyncExternalStore } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { BIRD, BIRD_VIEWBOX, DIAMOND, HALF_FOLD, SHEET, inset, toPoints } from "@/lib/bird";
+import { STEP_LABEL, STORIES, pickStory, pingsFor } from "@/lib/stories";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// One day in the life of someone who works hard and trains hard. Each effort is
-// a fold; the bird is what they earn, and it can land on any day of the week.
-const STEPS = [
-  { label: "Treino", eyebrow: "Disciplina", title: "05:30.", line: "Treino antes do sol. Ninguém viu. Nem precisava." },
-  { label: "Trabalho", eyebrow: "Execução", title: "09:00.", line: "Meta, reunião, entrega. Uma atrás da outra." },
-  { label: "Treino", eyebrow: "Disciplina", title: "19:00.", line: "Do trabalho direto pro treino. O corpo cobra, a cabeça agradece." },
-  { label: "Constância", eyebrow: "Constância", title: "Dia 15.", line: "Quinze dias seguidos. E faria de novo." },
-  { label: "Recompensa", eyebrow: "Recompensa", title: "Terça, 21h.", line: "Um vinho. Uma mesa boa. Isso é sexta-feira." },
+const PING_SPOTS = [
+  { x: "8%", y: "22%" },
+  { x: "64%", y: "16%" },
+  { x: "70%", y: "70%" },
+  { x: "4%", y: "68%" },
+  { x: "48%", y: "26%" },
+  { x: "26%", y: "76%" },
+  { x: "40%", y: "82%" },
+  { x: "36%", y: "10%" },
 ];
 
-const PINGS = [
-  { text: "Treino concluído · 10 km", x: "8%", y: "22%" },
-  { text: "7h12 de sono", x: "64%", y: "16%" },
-  { text: "Meta do mês batida ✓", x: "70%", y: "70%" },
-  { text: "Proposta aprovada", x: "4%", y: "68%" },
-  { text: "Treino de força ✓", x: "48%", y: "26%" },
-  { text: "Pace 5:10/km", x: "26%", y: "76%" },
-  { text: "Dia 15 de 15", x: "40%", y: "82%" },
-  { text: "Apresentação entregue", x: "36%", y: "10%" },
-];
+const noopSubscribe = () => () => {};
 
 const STAGES = [SHEET, DIAMOND, HALF_FOLD].map((s) => s.map((t) => toPoints(inset(t))));
 const BIRD_POINTS = BIRD.map(toPoints);
 
-export function OrigamiWeek() {
+// Each effort in the story is a fold; the bird is the reward, on whatever day it lands.
+export function OrigamiStory() {
   const root = useRef<HTMLElement>(null);
   const [step, setStep] = useState(0);
   const [progress, setProgress] = useState(0);
+  // Drawn on the client so every visit gets a different story; null while server-rendering.
+  const storyIndex = useSyncExternalStore(noopSubscribe, pickStory, () => null);
+  const story = STORIES[storyIndex ?? 0];
+  const pings = pingsFor(storyIndex ?? 0);
 
   useLayoutEffect(() => {
     const el = root.current;
@@ -113,31 +111,33 @@ export function OrigamiWeek() {
   }, []);
 
   return (
-    <section ref={root} className="relative h-svh overflow-hidden bg-paper" aria-label="Um dia de quem rala, em cinco dobras">
+    <section ref={root} className="relative h-svh overflow-hidden bg-paper" aria-label="Uma história de quem rala, em cinco dobras">
       <div
         className="sunset invisible absolute inset-0 opacity-0"
         style={{ background: "radial-gradient(120% 90% at 50% 100%, var(--sunset-to), var(--sunset-from) 55%, #f7dcc0)" }}
       />
 
-      {PINGS.map((p) => (
+      {PING_SPOTS.map((p, i) => (
         <div
-          key={p.text}
+          key={i}
           className="ping absolute z-10 hidden rounded-full border border-ink/10 bg-white/80 px-4 py-2 text-xs shadow-sm backdrop-blur sm:block sm:text-sm motion-reduce:hidden"
           style={{ left: p.x, top: p.y }}
         >
           <span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-accent align-middle" />
-          {p.text}
+          {pings[i]}
         </div>
       ))}
 
       <div className="relative mx-auto grid h-full max-w-7xl grid-rows-[auto_auto] content-center items-center gap-8 px-4 pb-24 pt-20 sm:px-8 md:grid-cols-2 md:grid-rows-1 md:pb-0">
-        <div className="relative order-2 h-52 md:order-1 md:h-72">
-          {STEPS.map((d, i) => (
-            <div key={d.title} className="day absolute inset-x-0 top-0 motion-reduce:hidden">
+        <div
+          className={`relative order-2 h-52 transition-opacity duration-500 md:order-1 md:h-72 ${storyIndex === null ? "opacity-0" : "opacity-100"}`}
+        >
+          {story.map((d, i) => (
+            <div key={i} className="day absolute inset-x-0 top-0 motion-reduce:hidden">
               <p className="eyebrow mb-4 text-ink/50">
-                {String(i + 1).padStart(2, "0")} / 05 · {d.eyebrow}
+                {String(i + 1).padStart(2, "0")} / 05 · {STEP_LABEL[d.kind].eyebrow}
               </p>
-              <h1 className="text-[clamp(3rem,9vw,7.5rem)] font-medium leading-[0.9] tracking-tighter">{d.title}</h1>
+              <h1 className="whitespace-nowrap text-[clamp(2.75rem,8vw,6.5rem)] font-medium leading-[0.9] tracking-tighter">{d.title}</h1>
               <p className="mt-4 text-lg text-ink/70 sm:text-2xl">{d.line}</p>
               {i === 4 && (
                 <p className="friday-tag invisible mt-6 translate-y-4 text-xl font-medium lowercase opacity-0 sm:text-3xl">
@@ -168,14 +168,14 @@ export function OrigamiWeek() {
       <div className="absolute inset-x-0 bottom-6 z-10 mx-auto flex max-w-7xl items-end justify-between px-4 sm:px-8">
         <div className="w-[min(60vw,320px)]" aria-hidden>
           <div className="mb-2 flex justify-between text-sm">
-            <span className="text-ink">{STEPS[step].label}</span>
+            <span className="text-ink">{STEP_LABEL[story[step].kind].label}</span>
             <span className="tabular-nums text-ink/50">{Math.round(progress * 100)}%</span>
           </div>
           <div className="h-px w-full bg-ink/15">
             <div className="h-px origin-left bg-ink" style={{ transform: `scaleX(${progress})` }} />
           </div>
         </div>
-        <p className="scroll-hint eyebrow text-ink/50">Role pra viver o dia ↓</p>
+        <p className="scroll-hint eyebrow text-ink/50">Role pra viver a história ↓</p>
       </div>
     </section>
   );
