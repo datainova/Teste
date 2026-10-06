@@ -13,7 +13,7 @@ const DETAILS = [
   },
   {
     title: "Detalhes",
-    body: "Etiqueta interna estampada (nada de coceira na nuca), com uma frase que só quem veste vê, e etiqueta tecida na barra.",
+    body: "Pássaro estampado com tinta à base d'água, macio ao toque. Etiqueta interna estampada (nada de coceira na nuca), com uma frase que só quem veste vê.",
   },
   {
     title: "Embalagem",
@@ -34,7 +34,7 @@ export const PRODUCTS: Product[] = [
     title: "Essential Tee",
     tagline: "O pássaro no peito. Quem sabe, reconhece.",
     description:
-      "A peça que começou tudo. Minimalista, pesada no tecido e leve no visual, com o pássaro bordado pequeno no peito esquerdo.",
+      "A peça que começou tudo. Minimalista, pesada no tecido e leve no visual, com o pássaro estampado pequeno no peito esquerdo.",
     price: { amount: 189, currencyCode: "BRL" },
     colors: [COLOR.preto, COLOR.offWhite],
     sizes: ["P", "M", "G", "GG", "XG"],

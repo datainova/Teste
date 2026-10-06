@@ -26,7 +26,7 @@ const ITEMS = [
   {
     n: "02",
     title: "Os detalhes",
-    body: "Pássaro bordado no peito, etiqueta tecida na barra e nada de etiqueta coçando a nuca. Lá dentro, estampada, uma frase que só quem veste vê.",
+    body: "Estampa com tinta à base d'água: macia, que quase não se sente e não racha. Sem etiqueta coçando a nuca. Lá dentro, estampada, uma frase que só quem veste vê.",
     visual: (
       <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-ink text-paper">
         <BirdMark className="h-8 w-auto" />

@@ -33,7 +33,7 @@ export function Tee({
       <path d="M140 38 Q200 84 260 38" fill="none" stroke="#000" strokeOpacity="0.22" strokeWidth="3" />
       <path d="M86 162 L84 120 M314 162 L316 120" stroke="#000" strokeOpacity="0.08" strokeWidth="2" />
       {print === "bird" ? (
-        // Embroidered bird on the wearer's left chest
+        // Printed bird on the wearer's left chest
         <g transform="translate(246 104) scale(0.055) translate(-200 -210)" style={{ transition: "fill 600ms" }} fill={ink}>
           {BIRD.map((t, i) => (
             <polygon key={i} points={toPoints(t)} />

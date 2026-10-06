@@ -10,7 +10,7 @@ export type ProductColor = {
   id: string;
   name: string;
   hex: string;
-  // Colour of the embroidered bird on this fabric.
+  // Colour of the printed bird or tagline on this fabric.
   ink: string;
   // Background tint the page fades to when this colour is selected.
   mood: string;
