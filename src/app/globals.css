@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f4f1ec;
+  --ink: #141414;
+  --accent: #c4602f;
+  --sunset-from: #f6c38f;
+  --sunset-to: #e9774a;
+}
+
+/* Friday mode: the whole site warms up. */
+:root[data-friday] {
+  --paper: #f8eadb;
+  --accent: #e3602b;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  transition: background-color 600ms ease;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 400ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.link-underline:hover,
+.link-underline:focus-visible {
+  background-size: 100% 1px;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 1rem 2rem;
+  font-weight: 500;
+  transition: transform 300ms cubic-bezier(0.2, 0.7, 0.2, 1), background-color 300ms;
+}
+.btn-primary:not(:disabled):hover {
+  transform: translateY(-2px);
+  background: var(--accent);
+}
+
+.eyebrow {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
