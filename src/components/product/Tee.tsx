@@ -43,11 +43,11 @@ export function Tee({
         // Tagline centred on the chest
         <text
           x="200"
-          y="122"
+          y="120"
           textAnchor="middle"
-          fontSize="13"
+          fontSize="9"
           fontWeight="500"
-          letterSpacing="-0.26"
+          letterSpacing="-0.18"
           fill={ink}
           style={{ fontFamily: "var(--font-geist-sans), sans-serif", transition: "fill 600ms" }}
         >
