@@ -1,7 +1,19 @@
 import { BIRD, toPoints } from "@/lib/bird";
 
+export type TeePrint = "bird" | "statement";
+
 // Flat-lay illustration used until real product photos exist.
-export function Tee({ color, ink, className }: { color: string; ink: string; className?: string }) {
+export function Tee({
+  color,
+  ink,
+  print = "bird",
+  className,
+}: {
+  color: string;
+  ink: string;
+  print?: TeePrint;
+  className?: string;
+}) {
   return (
     <svg viewBox="0 0 400 440" className={className} aria-hidden>
       <defs>
@@ -20,12 +32,28 @@ export function Tee({ color, ink, className }: { color: string; ink: string; cla
       />
       <path d="M140 38 Q200 84 260 38" fill="none" stroke="#000" strokeOpacity="0.22" strokeWidth="3" />
       <path d="M86 162 L84 120 M314 162 L316 120" stroke="#000" strokeOpacity="0.08" strokeWidth="2" />
-      {/* Embroidered bird on the wearer's left chest */}
-      <g transform="translate(246 104) scale(0.055) translate(-200 -210)" style={{ transition: "fill 600ms" }} fill={ink}>
-        {BIRD.map((t, i) => (
-          <polygon key={i} points={toPoints(t)} />
-        ))}
-      </g>
+      {print === "bird" ? (
+        // Embroidered bird on the wearer's left chest
+        <g transform="translate(246 104) scale(0.055) translate(-200 -210)" style={{ transition: "fill 600ms" }} fill={ink}>
+          {BIRD.map((t, i) => (
+            <polygon key={i} points={toPoints(t)} />
+          ))}
+        </g>
+      ) : (
+        // Tagline centred on the chest
+        <text
+          x="200"
+          y="122"
+          textAnchor="middle"
+          fontSize="13"
+          fontWeight="500"
+          letterSpacing="-0.26"
+          fill={ink}
+          style={{ fontFamily: "var(--font-geist-sans), sans-serif", transition: "fill 600ms" }}
+        >
+          work hard. feel friday.
+        </text>
+      )}
     </svg>
   );
 }

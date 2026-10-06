@@ -18,6 +18,7 @@ export type ProductColor = {
 
 export type Product = {
   id: string;
+  print: "bird" | "statement";
   handle: string;
   title: string;
   tagline: string;
@@ -35,6 +36,7 @@ export type CartLine = {
   colorName: string;
   colorHex: string;
   inkHex: string;
+  print: "bird" | "statement";
   size: string;
   quantity: number;
   unitPrice: number;

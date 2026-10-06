@@ -8,7 +8,7 @@
   --sunset-to: #e9774a;
 }
 
-/* Friday mode, switched on by the "Cumpri." button: the whole site warms up. */
+/* Friday mode, switched on by the "Feito." button: the whole site warms up. */
 :root[data-friday] {
   --paper: #f8eadb;
   --accent: #e3602b;

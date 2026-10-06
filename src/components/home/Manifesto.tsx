@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const TEXT =
-  "A gente não espera a sexta-feira. A gente constrói ela. No treino antes do sol nascer. Na entrega que ninguém viu. No décimo quinto dia seguido. E quando o trabalho tá feito, a sexta chega, seja ela que dia for. Um vinho numa terça. Uma viagem paga com o próprio esforço. Descanso na medida certa, porque amanhã tem mais.";
+  "A gente acredita em quem treina sério e entrega sério. Em quem acorda cedo pro treino e chega inteiro na reunião. Em quem não escolhe entre o corpo e a carreira. E acredita que descanso também faz parte do treino. Um vinho numa terça. Uma viagem paga com o próprio esforço. Um domingo sem relógio. Na medida certa, porque amanhã tem mais.";
 
 export function Manifesto() {
   const root = useRef<HTMLElement>(null);

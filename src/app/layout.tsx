@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s · Friday Feelings",
   },
   description:
-    "Sexta-feira não é um dia. É o que você sente quando cumpre. Camisetas minimalistas premium pra quem trabalha duro e treina duro.",
+    "Sexta-feira não é um dia. É um sentimento. Camisetas minimalistas premium pra quem treina sério e entrega sério.",
 };
 
 export const viewport: Viewport = {

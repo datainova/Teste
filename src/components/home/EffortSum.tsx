@@ -123,7 +123,7 @@ export function EffortSum() {
             <p className="mt-3 text-lg text-ink/70 sm:text-2xl">{reward.detail}</p>
             <p className="mt-8 text-xl font-medium leading-snug sm:text-3xl">
               Sexta-feira não é um dia.
-              <br />É o que você sente quando cumpre.
+              <br />É um sentimento.
             </p>
             <p className="mt-4 text-base lowercase text-ink/60 sm:text-lg">work hard. feel friday.</p>
           </div>

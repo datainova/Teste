@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-// Friday is earned, not scheduled: the visitor decides when they've done the work,
+// Friday is earned, not scheduled: the visitor says when the day is done,
 // and the whole site warms up (<html data-friday>, see globals.css).
 export function EarnedFriday() {
   const [earned, setEarned] = useState(false);
@@ -24,10 +24,10 @@ export function EarnedFriday() {
       <div className="relative mx-auto max-w-5xl px-4 py-32 text-center sm:px-8 sm:py-40">
         {earned ? (
           <div key="earned" className="text-ink">
-            <p className="eyebrow mb-6 text-ink/60">Friday feeling desbloqueado</p>
+            <p className="eyebrow mb-6 text-ink/60">Treino feito. Trabalho feito.</p>
             <h2 className="text-[clamp(3rem,10vw,8.5rem)] font-medium leading-[0.9] tracking-tighter">Então é sexta.</h2>
             <p className="mx-auto mt-6 max-w-md text-lg text-ink/70">
-              Não importa o dia. Aproveita, na medida certa. Amanhã tem treino.
+              Não importa o dia. Aproveita, na medida certa. Amanhã tem mais.
             </p>
             <button onClick={() => toggle(false)} className="mt-10 text-sm text-ink/70 link-underline">
               Voltar pro corre
@@ -37,16 +37,16 @@ export function EarnedFriday() {
           <div key="grind">
             <p className="eyebrow mb-6 text-paper/50">Sexta-feira não é um dia</p>
             <h2 className="text-[clamp(2.75rem,8vw,7rem)] font-medium leading-[0.92] tracking-tighter">
-              Hoje você cumpriu?
+              Tudo feito por hoje?
             </h2>
             <p className="mx-auto mt-6 max-w-md text-lg text-paper/60">
-              Treino feito, trabalho entregue. Só você sabe quando conquistou.
+              Só você sabe quando o dia está ganho.
             </p>
             <button
               onClick={() => toggle(true)}
               className="mt-12 rounded-full border border-paper/30 px-10 py-5 text-xl font-medium transition-all duration-300 hover:scale-105 hover:border-transparent hover:bg-paper hover:text-ink"
             >
-              Cumpri.
+              Feito.
             </button>
           </div>
         )}

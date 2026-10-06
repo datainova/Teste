@@ -44,7 +44,7 @@ export function CartDrawer() {
               return (
                 <li key={key} className="flex gap-4 py-5">
                   <div className="w-20 shrink-0 rounded-lg bg-ink/5 p-2">
-                    <Tee color={l.colorHex} ink={l.inkHex} />
+                    <Tee color={l.colorHex} ink={l.inkHex} print={l.print} />
                   </div>
                   <div className="flex flex-1 flex-col">
                     <div className="flex justify-between gap-2">

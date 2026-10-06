@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Tee } from "@/components/product/Tee";
 import { formatMoney, type Product } from "@/lib/commerce";
 import { useCart } from "@/lib/cart";
+import { PRELAUNCH } from "@/lib/site";
+import { WaitlistForm } from "@/components/WaitlistForm";
 
 export function ProductView({ product, initialColorId }: { product: Product; initialColorId?: string }) {
   const [color, setColor] = useState(product.colors.find((c) => c.id === initialColorId) ?? product.colors[0]);
@@ -24,6 +26,7 @@ export function ProductView({ product, initialColorId }: { product: Product; ini
       colorName: color.name,
       colorHex: color.hex,
       inkHex: color.ink,
+      print: product.print,
       size,
       quantity: 1,
       unitPrice: product.price.amount,
@@ -36,7 +39,7 @@ export function ProductView({ product, initialColorId }: { product: Product; ini
         className="flex aspect-square items-center justify-center rounded-3xl transition-colors duration-700 md:sticky md:top-28 md:aspect-[4/5]"
         style={{ backgroundColor: color.mood }}
       >
-        <Tee color={color.hex} ink={color.ink} className="w-3/4 drop-shadow-[0_30px_30px_rgba(0,0,0,0.2)]" />
+        <Tee color={color.hex} ink={color.ink} print={product.print} className="w-3/4 drop-shadow-[0_30px_30px_rgba(0,0,0,0.2)]" />
       </div>
 
       <div className="md:py-8">
@@ -94,10 +97,19 @@ export function ProductView({ product, initialColorId }: { product: Product; ini
           </div>
         </div>
 
-        <button onClick={addToCart} className="btn-primary mt-8 w-full">
-          Adicionar ao carrinho
-        </button>
-        <p className="mt-4 text-center text-sm text-ink/50">Frete grátis acima de R$ 299 · Primeira troca grátis</p>
+        {PRELAUNCH ? (
+          <div className="mt-8">
+            <p className="mb-3 text-sm text-ink/60">Drop 001 · poucas peças. Entre na lista pra ser avisado antes de todo mundo.</p>
+            <WaitlistForm product={product.handle} />
+          </div>
+        ) : (
+          <>
+            <button onClick={addToCart} className="btn-primary mt-8 w-full">
+              Adicionar ao carrinho
+            </button>
+            <p className="mt-4 text-center text-sm text-ink/50">Frete grátis acima de R$ 299 · Primeira troca grátis</p>
+          </>
+        )}
 
         <div className="mt-12 divide-y divide-ink/10 border-y border-ink/10">
           {product.details.map((d, i) => (

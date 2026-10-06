@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useSyncExternalStore } from "react";
 import { Wordmark } from "@/components/BirdMark";
 import { cartCount, useCart } from "@/lib/cart";
+import { PRELAUNCH } from "@/lib/site";
 
 export function Header() {
   const lines = useCart((s) => s.lines);
@@ -23,15 +24,26 @@ export function Header() {
           <Wordmark />
         </Link>
         <nav className="flex items-center gap-5 text-sm sm:gap-8">
-          <Link href="/loja" className="link-underline">
-            Loja
-          </Link>
           <Link href="/#manifesto" className="link-underline hidden sm:inline">
             Manifesto
           </Link>
-          <button onClick={() => setOpen(true)} className="link-underline" aria-label={`Abrir carrinho, ${count} itens`}>
-            Carrinho ({count})
-          </button>
+          <Link href="/#historia" className="link-underline hidden sm:inline">
+            A marca
+          </Link>
+          {PRELAUNCH ? (
+            <Link href="/#drop" className="link-underline">
+              Drop 001
+            </Link>
+          ) : (
+            <>
+              <Link href="/loja" className="link-underline">
+                Loja
+              </Link>
+              <button onClick={() => setOpen(true)} className="link-underline" aria-label={`Abrir carrinho, ${count} itens`}>
+                Carrinho ({count})
+              </button>
+            </>
+          )}
         </nav>
       </div>
     </header>

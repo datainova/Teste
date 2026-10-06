@@ -1,14 +1,10 @@
 import type { Product, ProductColor } from "./types";
 
-const COLORS: ProductColor[] = [
-  { id: "preto", name: "Preto", hex: "#141414", ink: "#efebe4", mood: "#2a2a2a" },
-  { id: "off-white", name: "Off-white", hex: "#efebe4", ink: "#141414", mood: "#f6f3ee" },
-  { id: "mescla", name: "Cinza Mescla", hex: "#a3a3a0", ink: "#141414", mood: "#d9d9d6" },
-  { id: "marinho", name: "Azul Marinho", hex: "#1f2a44", ink: "#efebe4", mood: "#3a4560" },
-  { id: "oliva", name: "Verde Oliva", hex: "#5b6146", ink: "#efebe4", mood: "#8a8f74" },
-  { id: "areia", name: "Areia", hex: "#cdba9a", ink: "#141414", mood: "#e8dcc6" },
-  { id: "por-do-sol", name: "Pôr do Sol", hex: "#c4602f", ink: "#efebe4", mood: "#f0a273" },
-];
+const COLOR: Record<string, ProductColor> = {
+  preto: { id: "preto", name: "Preto", hex: "#141414", ink: "#efebe4", mood: "#2a2a2a" },
+  offWhite: { id: "off-white", name: "Off-white", hex: "#efebe4", ink: "#141414", mood: "#f6f3ee" },
+  areia: { id: "areia", name: "Areia", hex: "#cdba9a", ink: "#141414", mood: "#e8dcc6" },
+};
 
 const DETAILS = [
   {
@@ -17,11 +13,11 @@ const DETAILS = [
   },
   {
     title: "Detalhes",
-    body: "Pássaro bordado no peito esquerdo, etiqueta interna estampada (nada de coceira na nuca) e tag externa em tecido.",
+    body: "Etiqueta interna estampada (nada de coceira na nuca), com uma frase que só quem veste vê, e etiqueta tecida na barra.",
   },
   {
     title: "Embalagem",
-    body: "Chega dobrada à mão numa caixa minimalista com um cartão escrito: work hard. feel friday.",
+    body: "Caixa preta por fora, pôr do sol por dentro. E um papel de origami pra você dobrar o próprio pássaro.",
   },
   {
     title: "Trocas",
@@ -29,16 +25,31 @@ const DETAILS = [
   },
 ];
 
+// Drop 001: the first small batch, two models.
 export const PRODUCTS: Product[] = [
   {
     id: "ff-essential-tee",
     handle: "essential-tee",
+    print: "bird",
     title: "Essential Tee",
-    tagline: "Pra quem conquista a própria sexta-feira.",
+    tagline: "O pássaro no peito. Quem sabe, reconhece.",
     description:
-      "A peça que começou tudo. Minimalista, pesada no tecido e leve no visual, com o pássaro pequeno no peito pra lembrar do que você conquista.",
+      "A peça que começou tudo. Minimalista, pesada no tecido e leve no visual, com o pássaro bordado pequeno no peito esquerdo.",
     price: { amount: 189, currencyCode: "BRL" },
-    colors: COLORS,
+    colors: [COLOR.preto, COLOR.offWhite],
+    sizes: ["P", "M", "G", "GG", "XG"],
+    details: DETAILS,
+  },
+  {
+    id: "ff-statement-tee",
+    handle: "statement-tee",
+    print: "statement",
+    title: "Statement Tee",
+    tagline: "A frase que explica a marca sozinha.",
+    description:
+      "work hard. feel friday. Centralizado no peito, em letra pequena. Pra quem gosta de dizer de onde vem a sexta-feira.",
+    price: { amount: 189, currencyCode: "BRL" },
+    colors: [COLOR.preto, COLOR.areia],
     sizes: ["P", "M", "G", "GG", "XG"],
     details: DETAILS,
   },

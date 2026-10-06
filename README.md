@@ -2,8 +2,8 @@
 
 > work hard. feel friday.
 
-E-commerce da Friday Feelings. Sexta-feira não é um dia: é o que você sente quando cumpre.
-Pra quem trabalha duro, treina duro e aproveita na medida certa.
+E-commerce da Friday Feelings. Sexta-feira não é um dia. É um sentimento.
+Pra quem treina sério, entrega sério e aproveita na medida certa.
 
 ## Stack
 
@@ -33,18 +33,24 @@ src/
   components/
     home/EffortSum.tsx       Hero "a conta do esforço": cada número é uma dobra até virar o pássaro
     home/Manifesto.tsx       Manifesto com revelação palavra a palavra
-    home/ColorShowcase.tsx   Seletor de cor que muda o clima da seção
-    home/Craft.tsx           Detalhes: tecido, bordado, tag, caixa
-    home/EarnedFriday.tsx    Botão "Cumpri.": a sexta acontece quando você conquista
+    home/Founder.tsx         "Ninguém começa pronto": a história do fundador
+    home/Craft.tsx           Detalhes: tecido, etiquetas, caixa, papel de origami
+    home/Drop.tsx            Drop 001 com lista de espera
+    home/EarnedFriday.tsx    Botão "Feito.": a sexta acontece quando o dia está ganho
+    home/Community.tsx       Mil pássaros: #feelfriday e a contagem da comunidade
     cart/CartDrawer.tsx      Carrinho em gaveta
   lib/
     bird.ts                  Geometria do pássaro (logo) e etapas da dobra
     effort.ts                Números do esforço e recompensas do hero
     commerce/                Camada de dados: hoje mock, depois Shopify
     cart.ts                  Estado do carrinho
+    site.ts                  Pré-lançamento (PRELAUNCH), contagem dos mil pássaros, links
+    waitlist.ts              Lista de espera (ainda não conectada a um serviço)
 ```
 
 ## Próximos passos
+
+0. Conectar a lista de espera (`src/lib/waitlist.ts`) a um serviço de e-mail antes de divulgar o site
 
 1. Criar a loja Shopify e trocar `src/lib/commerce/index.ts` por chamadas à Storefront API
 2. Checkout Shopify com Mercado Pago/Pagar.me (Pix, cartão, boleto) e frete via Melhor Envio
